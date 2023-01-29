@@ -1,0 +1,680 @@
+{
+	"info": {
+		"_postman_id": "a8b0b321-a6d9-4300-9290-9f178e95c8b1",
+		"name": "Encuentro Musical",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Crear Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\" : \"admin\",\r\n\"password\" : \"admin123\",\r\n\"repeatPassword\" : \"admin123\",\r\n\"email\" : \"admin@encuentro-musical.com\",\r\n\"repeatEmail\" :  \"admin@encuentro-musical.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/admin/crear",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roleAuthority\" : \"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/admin/crear_role",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"crear_role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios paginados y/o filtrados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"role\" : null,\r\n\"username\" : null,\r\n\"email\" : null,\r\n\"eliminado\" : null\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/admin/ver_lista_usuarios?page&size",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"ver_lista_usuarios"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null
+								},
+								{
+									"key": "size",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin2\",\r\n    \"password\" : \"admin1234\",\r\n    \"repeatPassword\" : \"admin1234\",\r\n    \"email\" : \"admin@encuentro-musical.com\",\r\n    \"repeatEmail\" : \"admin@encuentro-musical.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/admin/editar_admin",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"editar_admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Usuario por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/admin/eliminar_usuario/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"eliminar_usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Publicación  por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/admin/eliminar_publicacion/17",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"eliminar_publicacion",
+								"17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alta de Usuarios",
+			"item": [
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\" : \"usuario\",\r\n\"password\" : \"prueba123\",\r\n\"repeatPassword\" : \"prueba123\",\r\n\"email\" : \"usuario@gmail.com\",\r\n\"repeatEmail\" :  \"usuario@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/crear",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"username\" : \"admin\",\r\n\"password\" : \"admin123\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"item": [
+				{
+					"name": "Desloguearse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Banda",
+			"item": [
+				{
+					"name": "Ver mi Perfil",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bandas/mi_perfil",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bandas",
+								"mi_perfil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Perfil Banda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"nombreBanda\" : \"Nueva Banda\",\r\n\"linkRedSocial\" : \"nuevabanda.com/banda\", \r\n\"provincia\" : \"Buenos Aires\",\r\n\"localidad\" : \"Capital\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bandas/crear",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bandas",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Publicacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"titulo\" : \"titulo de prueba\",\r\n\"fechaPublicacion\" : \"2022-11-11\",\r\n\"generoMusical\" : \"Trap\",\r\n\"remunerado\" : \"false\",\r\n\"descripcion\" : \"Creando anuncio de prueba\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bandas/crear_publicacion",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bandas",
+								"crear_publicacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Usuario Banda",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"provincia\" : \"Buenos Aires\", \r\n\"localidad\" : \"Alt. Brown\",\r\n\"linkRedSocial\" : \"prueba.com/prueba\",\r\n\"nombreBanda\" : \"Metallica\",\r\n\"usuario\" :\r\n {\r\n    \"username\" : \"Editado\",\r\n    \"password\" : \"editado\",\r\n    \"repeatPassword\" : \"editado\",\r\n    \"email\" : \"editado@gmail.com\",\r\n    \"repeatEmail\" : \"editado@gmail.com\"\r\n}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bandas/editar_usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bandas",
+								"editar_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar mi Publicación",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"idPublicacion\" : 1,\r\n\"titulo\" : \"Editando Anuncio\",\r\n\"fechaPublicacion\" : \"2023-01-22\",\r\n\"linkRedSocial\" : \"linkdeprueba/prueba.com\",\r\n\"generoMusical\" : \"Trap\",\r\n\"remunerado\" : \"true\",\r\n\"descripcion\" : \"Probando la edicion de un anuncio con una descripción un poco más larga para que se vea que se puede ingresar una descripción con un mínimo de 20 y un máximo de 500 caracteres. \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bandas/editar_mi_publicacion",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bandas",
+								"editar_mi_publicacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Publicación",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bandas/eliminar_mi_publicacion/45",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bandas",
+								"eliminar_mi_publicacion",
+								"45"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Perfil",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bandas/eliminar_usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bandas",
+								"eliminar_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver Publicaciones de Musicos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"fechaPublicacion\" : null,\r\n\"generoMusical\" : null,\r\n\"provincia\" : null,\r\n\"localidad\" : null,\r\n\"instrumento\" : null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bandas/ver_publicaciones_musicos?page=&size",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bandas",
+								"ver_publicaciones_musicos"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "size",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Músico",
+			"item": [
+				{
+					"name": "Ver Mi Perfil",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/musicos/mi_perfil",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"musicos",
+								"mi_perfil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Perfil Musico",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"nombre\" : \"Musico\",\r\n\"apellido\" : \"Prueba\",\r\n\"provincia\" : \"Cordoba\",\r\n\"localidad\" : \"Capital\",\r\n\"instrumento\" : \"Piano\",\r\n\"linkRedSocial\" : \"musico/soy_musico.com\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/musicos/crear_mi_perfil",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"musicos",
+								"crear_mi_perfil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Publicación",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"titulo\" : \"Creando publicación de Músico\",\r\n\"fechaPublicacion\" : \"2023-01-29\",\r\n\"generoMusical\" : \"Pop\",\r\n\"remunerado\" : false,\r\n\"descripcion\" : \"Prueba para crear una publicación.\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/musicos/crear_publicacion",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"musicos",
+								"crear_publicacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar mi Publicación",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"idPublicacion\" : 54,\r\n\"titulo\" : \"Editando publicacion de Musico\",\r\n\"fechaPublicacion\" : \"2023-01-23\",\r\n\"generoMusical\" : \"Melodico\",\r\n\"remunerado\" : \"true\",\r\n\"descripcion\" : \"probando la edicion de un anuncio\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/musicos/editar_mi_publicacion",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"musicos",
+								"editar_mi_publicacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar mi Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"nombre\" : \"Musico Editado\",\r\n\"apellido\" : \"Editado\",\r\n\"provincia\" : \"Buenos Aires\",\r\n\"localidad\" : \"Alt. Brown\",\r\n\"instrumento\" : \"Guitarra\",\r\n\"linkRedSocial\" : \"editado/editado.com\",\r\n \"usuario\" : {\r\n    \"username\" : \"Editado2\",\r\n    \"password\" : \"editado\",\r\n    \"repeatPassword\" : \"editado\",\r\n    \"email\" : \"editado2@gmail.com\",\r\n    \"repeatEmail\" : \"editado2@gmail.com\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/musicos/editar_usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"musicos",
+								"editar_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/musicos/eliminar_usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"musicos",
+								"eliminar_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver Publicaciones de Bandas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"fechaPublicacion\" : null,\r\n\"generoMusical\" : null,\r\n\"provincia\" : null,\r\n\"localidad\" : null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/musicos/ver_publicaciones_bandas?page=&size=",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"musicos",
+								"ver_publicaciones_bandas"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "size",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
