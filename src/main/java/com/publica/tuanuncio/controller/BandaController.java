@@ -8,6 +8,8 @@ import com.publica.tuanuncio.model.Banda;
 import com.publica.tuanuncio.model.Publicacion;
 import com.publica.tuanuncio.service.IBandaService;
 import com.publica.tuanuncio.service.IPublicacionBandaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +27,6 @@ public class BandaController {
 
     @Autowired
     private IBandaService bandaService;
-
     @Autowired
     private IPublicacionBandaService publicacionService;
 
@@ -33,7 +34,8 @@ public class BandaController {
     //CREAR PERFIL BANDA
     @PreAuthorize("hasRole ('USER')")
     @PostMapping("/crear")
-    public ResponseEntity<String> crearPerfilBanda(@Valid @RequestBody Banda banda, HttpSession session){
+    @Operation(summary = "Crea un perfil 'Banda'")
+    public ResponseEntity<String> crearPerfilBanda(@Valid @RequestBody Banda banda, HttpSession session) {
         bandaService.crearBanda(session, banda);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Su perfil 'Banda' se creó correctamente. Vuelva a loguearse para poder ver su perfil.");
@@ -42,14 +44,16 @@ public class BandaController {
     //MOSTRAR PERFIL
     @PreAuthorize("hasRole ('BANDA')")
     @GetMapping("/mi_perfil")
-    public ResponseEntity<GetBandaDTO> verPerfil(HttpSession session){
+    @Operation(summary = "Muestra los datos del usuario 'Banda' y sus publicaciones creadas")
+    public ResponseEntity<GetBandaDTO> verPerfil(HttpSession session) {
         return ResponseEntity.ok(bandaService.verPerfilBanda(session));
     }
 
     //EDITAR USUARIO
     @PreAuthorize("hasRole ('BANDA')")
     @PutMapping("/editar_usuario")
-    public ResponseEntity<String> editarUsuario(@Valid @RequestBody PostBandaDTO bandaDTO, HttpSession session){
+    @Operation(summary = "Edita el usuario 'Banda'. Desde este endpoint no es posible editar sus publicaciones")
+    public ResponseEntity<String> editarUsuario(@Valid @RequestBody PostBandaDTO bandaDTO, HttpSession session) {
         bandaService.editarUsuario(session, bandaDTO);
         return ResponseEntity.ok("Su usuario se editó correctamente!");
     }
@@ -57,7 +61,8 @@ public class BandaController {
     //ELIMINAR USUARIO
     @PreAuthorize("hasRole ('BANDA')")
     @DeleteMapping("/eliminar_usuario")
-    public ResponseEntity<String> eliminarUsuario(HttpSession session){
+    @Operation(summary = "Elimina el usuario de forma lógica y borra de forma permanente el perfil y las publicaciones creadas.")
+    public ResponseEntity<String> eliminarUsuario(HttpSession session) {
         bandaService.eliminarMiPerfil(session);
         return ResponseEntity.ok("Su usuario ha sido eliminado!");
     }
@@ -67,7 +72,8 @@ public class BandaController {
     //CREAR PUBLICACIÓN
     @PreAuthorize("hasRole ('BANDA')")
     @PostMapping("/crear_publicacion")
-    public ResponseEntity<String> crearPublicacion(@Valid @RequestBody Publicacion publicacion, HttpSession session){
+    @Operation(summary = "Crea una publicación.")
+    public ResponseEntity<String> crearPublicacion(@Valid @RequestBody Publicacion publicacion, HttpSession session) {
         publicacionService.crearPublicacion(publicacion, session);
         return ResponseEntity.status(HttpStatus.CREATED).body("Su publicación fue creada con exito!");
     }
@@ -75,15 +81,20 @@ public class BandaController {
     //MOSTRAR PUBLICACIONES CREADAS POR 'ROLE_MUSICO', PAGINADAS Y/o FILTRADAS
     @PreAuthorize("hasRole ('BANDA')")
     @GetMapping("/ver_publicaciones_musicos")
-    public ResponseEntity<Page<GetPublicacionMusicoDTO>> verPublicacionesDeMusicos(@Valid @RequestBody FiltroDTO filtro,
-                                                                                   Pageable pageable){
+    @Operation(summary = "Devuelve una lista de publicaciones paginadas y/o filtradas. La utilización de los filtros es opcional.")
+    public ResponseEntity<Page<GetPublicacionMusicoDTO>> verPublicacionesDeMusicos(
+            @Parameter(description = "Las busquedas solo se pueden filtrar por fechaPublicacion, generoMusical, " +
+                    "provincia, localidad y/o instrumento. Si se coloca un valor null se ignora el filtrado.")
+            @RequestBody FiltroDTO filtro,
+            Pageable pageable) {
         return ResponseEntity.ok(publicacionService.verPublicaciones(filtro, pageable));
     }
 
     //EDITAR PUBLICACIÓN
     @PreAuthorize("hasRole ('BANDA')")
     @PutMapping("/editar_mi_publicacion")
-    public ResponseEntity<String> editarMiPublicacion(@Valid @RequestBody Publicacion publicacion, HttpSession session){
+    @Operation(summary = "Edita una publicacion por id.")
+    public ResponseEntity<String> editarMiPublicacion(@Valid @RequestBody Publicacion publicacion, HttpSession session) {
         publicacionService.editarPublicacion(publicacion, session);
         return ResponseEntity.ok("Su publicación se editó correctamente.");
     }
@@ -91,8 +102,9 @@ public class BandaController {
     //ELIMINAR PUBLICACIÓN
     @PreAuthorize("hasRole ('BANDA')")
     @DeleteMapping("eliminar_mi_publicacion/{idPublicacion}")
-    public ResponseEntity<String> eliminarMiPublicacion(@PathVariable Long idPublicacion, HttpSession session){
+    @Operation(summary = "Elimina una publicación por id")
+    public ResponseEntity<String> eliminarMiPublicacion(@PathVariable Long idPublicacion, HttpSession session) {
         publicacionService.eliminarPublicacion(idPublicacion, session);
-       return ResponseEntity.ok("Su publicación se eliminó correctamente.");
+        return ResponseEntity.ok("Su publicación se eliminó correctamente.");
     }
 }

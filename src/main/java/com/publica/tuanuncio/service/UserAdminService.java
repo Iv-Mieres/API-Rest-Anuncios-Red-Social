@@ -66,6 +66,13 @@ public class UserAdminService implements IUserAdminService {
         userAdminRepository.save(user);
     }
 
+    //MUESTRA UN USUARIO POR ID
+    @Override
+    public Usuario verUsuario(Long idUsuario){
+      return userAdminRepository.findById(idUsuario)
+              .orElseThrow(() -> new BadRequestException("El usuario con id: " + idUsuario + " no se encuentra registrado."));
+    }
+
     //MUESTRA UNA LISTA DE USUARIOS PAGINADOS QUE PUEDE FILTRARSE POR ID, EMAIL Y/O USERNAME
     @Override
     public Page<GetUsuarioDTO> listaUsuarios(FiltroDTO filtro, Pageable pageable) {
@@ -74,8 +81,6 @@ public class UserAdminService implements IUserAdminService {
                 .map(usuario -> modelMapper.map(usuario, GetUsuarioDTO.class))
                 .collect(Collectors.toList());
         return new PageImpl<GetUsuarioDTO> (usuarios, pageable, usuarios.size());
-
-
     }
 
     //EDITAR DATOS DE ADMINISTRADOR

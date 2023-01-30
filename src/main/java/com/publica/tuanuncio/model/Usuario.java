@@ -14,6 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -34,9 +38,16 @@ public  class Usuario implements Serializable, UserDetails{
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long idUsuario;
+	@NotNull(message = "No puede estar vacio")
+	@Size(min = 4, max = 50, message = "Debe contener entre 4 y 50 caracteres")
 	@Column(unique = true)
 	private String username;
+	@NotNull(message = "No puede estar vacio")
+	@Size(min = 6, message = "Debe contener un minimo de 6 caracteres")
 	private String password;
+	@NotNull(message = "No puede estar vacio")
+	@Email(message = "Ingrese un Email válido")
+	@NotBlank(message = "No puede estar vacio")
 	@Column(unique = true)
 	private String email;
 	private String eliminado;

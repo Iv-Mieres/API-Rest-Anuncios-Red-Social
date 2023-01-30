@@ -26,5 +26,6 @@ public abstract class PerfilUsuario{
 	@Size(min = 4, max = 50, message = "Debe contener entre 4 y 50 caracteres")
 	private String localidad;
 	@NotNull(message = "No puede estar vacío")
+	@Size(min = 10 ,max = 60, message = "Debe contener entre 10 y 60 caracteres")
 	private String linkRedSocial;
 }

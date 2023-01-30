@@ -22,6 +22,7 @@ public class ExceptionAdviceController {
 
 
     //METODO PARA CAPTURAR LAS EXCEPTIONS DE SPRING VALIDATION - "MethodArgumentNotValidException"
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> validException(MethodArgumentNotValidException methodEx) {
         Map<String, String> mjError = new HashMap<>();
@@ -32,6 +33,7 @@ public class ExceptionAdviceController {
     }
 
     //METODO PARA CAPTURAR LAS EXCEPTIONS LANZADAS POR "BadRequestException" Y "Exception"
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler({BadRequestException.class, Exception.class})
     public ResponseEntity<ErrorDetails> badRequestExceptions(Exception badEx) {
         var error = new ErrorDetails();
@@ -41,6 +43,7 @@ public class ExceptionAdviceController {
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ResponseEntity<ErrorDetails> violationExceptions(DataIntegrityViolationException violationEx) {
         var error = new ErrorDetails();
         error.setStatus(HttpStatus.BAD_REQUEST.value() + " BAD_REQUEST");
@@ -50,6 +53,7 @@ public class ExceptionAdviceController {
 
     //METODO PARA CAPTURAR LAS EXCEPTIONS LANZADAS POR "MethodArgumentTypeMismatchException"
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ResponseEntity<ErrorDetails> typeMismatchExceptions() {
         var error = new ErrorDetails();
         error.setStatus(HttpStatus.BAD_REQUEST.value() + " BAD_REQUEST");

@@ -25,6 +25,7 @@ public class PostUsuarioDTO {
 	@NotNull(message = "No puede estar vacio")
 	@Email(message = "Ingrese un Email válido")
 	@NotBlank(message = "No puede estar vacio")
+	@Column(unique = true)
 	private String email;
 	@NotNull(message = "No puede estar vacio")
 	@Size(min = 6, message = "Debe contener un minimo de 6 caracteres")

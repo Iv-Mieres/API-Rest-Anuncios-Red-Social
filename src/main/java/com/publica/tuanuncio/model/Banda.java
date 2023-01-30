@@ -28,7 +28,7 @@ import org.hibernate.annotations.CascadeType;
 @AttributeOverride(name="idPerfil", column=@Column(name="idBanda"))
 public class Banda extends PerfilUsuario{
 	@NotNull(message = "No puede estar vacio")
-	@Size(min= 3, message = "Debe contener un minimo de 3 caracteres")
+	@Size(min= 3, max = 50, message = "Debe contener entre 3 y 50 caracteres")
 	private String nombreBanda;
 	@OneToOne
 	@JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", unique = true )

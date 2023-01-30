@@ -29,13 +29,13 @@ import org.hibernate.annotations.CascadeType;
 @AttributeOverride(name="idPerfil", column=@Column(name="idMusico"))
 public class Musico extends PerfilUsuario{
 	@NotNull(message = "Debe contener un nombre")
-	@Size(min = 4, message = "Debe contener un minimo de 4 caracteres")
+	@Size(min = 4, max = 50, message = "Debe contener entre 4 y 50 caracteres")
 	private String nombre;
 	@NotNull(message = "Debe contener un apellido")
-	@Size(min = 4, message = "Debe contener un minimo de 4 caracteres")
+	@Size(min = 4, max = 50, message = "Debe contener entre 4 y 50 caracteres")
 	private String apellido;
 	@NotNull(message = "Debe contener un instrumento")
-	@Size(min = 3, message = "Debe contener un minimo de 3 caracteres")
+	@Size(min = 3, max = 50, message = "Debe contener entre 4 y 50 caracteres")
 	private String instrumento;
 	@OneToOne
 	@JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", unique = true )
