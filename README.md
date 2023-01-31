@@ -29,10 +29,9 @@ integrantes para sus proyectos personales.
   ## Diagrama UML   
   ![Diagramadeclase](https://user-images.githubusercontent.com/103857812/215372306-cf64a8e4-b278-4df2-9b06-e0cdfd82a8c8.png)
 
->El diagrama de clases UML muestra la aplicación de herencia de las tablas `Musico` `Banda` siendo la tabla `PerfilUsuario` la clase abstracta "padre". Para que la herencia
+>El diagrama de clase UML muestra el uso de herencia en las tablas `Musico` `Banda` siendo la tabla `PerfilUsuario` la clase abstracta "padre". Para que la herencia
 tuviera efecto y haya podido ser reflejada en la base de datos fué necesario agregar una anotación especifica de Jpa. Además se hizo uso de la inteface UserDetails,
-implementada por la clase Usuario para que Spring Security se pueda encargar de controlar el inicio de session, los roles de usuario y el acceso a los diferentes
-endpoints.
+implementada por la clase Usuario para que Spring Security se pueda encargar de controlar el inicio de session, los roles de usuario y el acceso a los diferentes endpoints. Támbien se utiliza el metodo `isEnable()` para eliminar un usuario de forma lógica sin necesidad de borrar sus datos en la BD.
 
 ## README EN CONSTRUCCIÓN . . .
   
