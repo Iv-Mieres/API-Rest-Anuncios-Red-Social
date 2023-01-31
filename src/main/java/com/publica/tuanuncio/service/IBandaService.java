@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 import com.publica.tuanuncio.dto.get.GetBandaDTO;
 import com.publica.tuanuncio.dto.post.CrearBandaDTO;
 import com.publica.tuanuncio.dto.post.EditarBandaDTO;
-import com.publica.tuanuncio.model.Banda;
 
 
 public interface IBandaService {
