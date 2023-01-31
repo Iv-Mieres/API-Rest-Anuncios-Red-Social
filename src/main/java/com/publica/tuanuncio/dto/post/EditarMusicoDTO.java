@@ -10,9 +10,9 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostMusicoDTO {
+public class EditarMusicoDTO {
 
-	private PostUsuarioDTO usuario;
+	private CrearUsuarioDTO usuario;
 	@NotNull(message = "Debe contener un nombre")
 	@Size(min = 4, message = "Debe contener un minimo de 4 caracteres")
 	private String nombre;

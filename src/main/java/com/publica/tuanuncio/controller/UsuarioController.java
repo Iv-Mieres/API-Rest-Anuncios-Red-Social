@@ -1,7 +1,7 @@
 package com.publica.tuanuncio.controller;
 
-import com.publica.tuanuncio.dto.post.PostLoginDTO;
-import com.publica.tuanuncio.dto.post.PostUsuarioDTO;
+import com.publica.tuanuncio.dto.LoginDTO;
+import com.publica.tuanuncio.dto.post.CrearUsuarioDTO;
 import com.publica.tuanuncio.service.IUserAdminService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -29,18 +29,19 @@ public class UsuarioController {
     //CREAR USUARIO CON ROLE_USER
     @PostMapping("/crear")
     @Operation(summary = "Crea un usuario con role 'USER'")
-    public ResponseEntity<String> crearUsuario(@Valid @RequestBody PostUsuarioDTO usuario) {
+    public ResponseEntity<String> crearUsuario(@Valid @RequestBody CrearUsuarioDTO usuario) {
         usuarioService.crearUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body("Su usuario ha sido creado con exito!");
     }
 
     // LOGUEARSE
     @PostMapping("/login")
-    @Operation(summary = "Realiza un login con usuario y contraseña.")
+    @Operation(summary = "Realiza un login con usuario y contraseña.El logout es manejado de forma interna por Spring Security." +
+            " url logout: localhost:8080/logout")
     public ResponseEntity<String> loginUsuario(
             @Parameter(description = "Nota: El logout es manejado de forma interna por Spring Security. " +
                     " url logout: localhost:8080/logout")
-            @RequestBody PostLoginDTO login) {
+            @RequestBody LoginDTO login) {
         SecurityContextHolder.getContext()
                 .setAuthentication(authenticationManager.authenticate(
                         new UsernamePasswordAuthenticationToken(login.getUsername(),

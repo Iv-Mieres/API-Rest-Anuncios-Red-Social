@@ -1,5 +1,6 @@
 package com.publica.tuanuncio.service;
 
+import com.publica.tuanuncio.dto.PublicacionDTO;
 import com.publica.tuanuncio.dto.get.GetPublicacionBandaDTO;
 import com.publica.tuanuncio.dto.FiltroDTO;
 import com.publica.tuanuncio.exceptionHandler.model.BadRequestException;
@@ -31,9 +32,10 @@ public class PublicacionMusicoService implements IPublicacionMusicoService {
 
     //CREA UNA PUBLICACIÓN COMO MÚSICO
     @Override
-    public void crearPublicacion(Publicacion publicacion, HttpSession session) {
+    public void crearPublicacion(PublicacionDTO publicacionDTO, HttpSession session) {
         var usuario = this.userSession(session);
-        this.validarFecha(publicacion.getFechaPublicacion());
+        this.validarFecha(publicacionDTO.getFechaPublicacion());
+        var publicacion = modelMapper.map(publicacionDTO, Publicacion.class);
         publicacion.setMusico(usuario.getPerfilMusico());
         publicacionRepository.save(publicacion);
     }
@@ -51,10 +53,11 @@ public class PublicacionMusicoService implements IPublicacionMusicoService {
 
     //EDITA UNA PUBLICACIÓN
     @Override
-    public void editarPublicacion(Publicacion publicacion, HttpSession session) {
+    public void editarPublicacion(PublicacionDTO publicacionDTO, HttpSession session) {
         var usuarioSession = this.userSession(session);
-        this.validarFecha(publicacion.getFechaPublicacion());
-        if (this.usuarioBDIgualUsuarioSession(publicacion.getIdPublicacion(), usuarioSession)) {
+        this.validarFecha(publicacionDTO.getFechaPublicacion());
+        if (this.usuarioBDIgualUsuarioSession(publicacionDTO.getIdPublicacion(), usuarioSession)) {
+            var publicacion = modelMapper.map(publicacionDTO, Publicacion.class);
             publicacion.setMusico(usuarioSession.getPerfilMusico());
             publicacionRepository.save(publicacion);
         }

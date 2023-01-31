@@ -1,8 +1,10 @@
 package com.publica.tuanuncio.controller;
 
+import com.publica.tuanuncio.dto.PublicacionDTO;
 import com.publica.tuanuncio.dto.get.GetBandaDTO;
 import com.publica.tuanuncio.dto.get.GetPublicacionMusicoDTO;
-import com.publica.tuanuncio.dto.post.PostBandaDTO;
+import com.publica.tuanuncio.dto.post.CrearBandaDTO;
+import com.publica.tuanuncio.dto.post.EditarBandaDTO;
 import com.publica.tuanuncio.dto.FiltroDTO;;
 import com.publica.tuanuncio.model.Banda;
 import com.publica.tuanuncio.model.Publicacion;
@@ -35,8 +37,8 @@ public class BandaController {
     @PreAuthorize("hasRole ('USER')")
     @PostMapping("/crear")
     @Operation(summary = "Crea un perfil 'Banda'")
-    public ResponseEntity<String> crearPerfilBanda(@Valid @RequestBody Banda banda, HttpSession session) {
-        bandaService.crearBanda(session, banda);
+    public ResponseEntity<String> crearPerfilBanda(@Valid @RequestBody CrearBandaDTO bandaDTO, HttpSession session) {
+        bandaService.crearBanda(session, bandaDTO);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Su perfil 'Banda' se creó correctamente. Vuelva a loguearse para poder ver su perfil.");
     }
@@ -53,7 +55,7 @@ public class BandaController {
     @PreAuthorize("hasRole ('BANDA')")
     @PutMapping("/editar_usuario")
     @Operation(summary = "Edita el usuario 'Banda'. Desde este endpoint no es posible editar sus publicaciones")
-    public ResponseEntity<String> editarUsuario(@Valid @RequestBody PostBandaDTO bandaDTO, HttpSession session) {
+    public ResponseEntity<String> editarUsuario(@Valid @RequestBody EditarBandaDTO bandaDTO, HttpSession session) {
         bandaService.editarUsuario(session, bandaDTO);
         return ResponseEntity.ok("Su usuario se editó correctamente!");
     }
@@ -73,7 +75,7 @@ public class BandaController {
     @PreAuthorize("hasRole ('BANDA')")
     @PostMapping("/crear_publicacion")
     @Operation(summary = "Crea una publicación.")
-    public ResponseEntity<String> crearPublicacion(@Valid @RequestBody Publicacion publicacion, HttpSession session) {
+    public ResponseEntity<String> crearPublicacion(@Valid @RequestBody PublicacionDTO publicacion, HttpSession session) {
         publicacionService.crearPublicacion(publicacion, session);
         return ResponseEntity.status(HttpStatus.CREATED).body("Su publicación fue creada con exito!");
     }
@@ -94,7 +96,7 @@ public class BandaController {
     @PreAuthorize("hasRole ('BANDA')")
     @PutMapping("/editar_mi_publicacion")
     @Operation(summary = "Edita una publicacion por id.")
-    public ResponseEntity<String> editarMiPublicacion(@Valid @RequestBody Publicacion publicacion, HttpSession session) {
+    public ResponseEntity<String> editarMiPublicacion(@Valid @RequestBody PublicacionDTO publicacion, HttpSession session) {
         publicacionService.editarPublicacion(publicacion, session);
         return ResponseEntity.ok("Su publicación se editó correctamente.");
     }

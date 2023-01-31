@@ -2,12 +2,10 @@ package com.publica.tuanuncio.controller;
 
 import com.publica.tuanuncio.dto.FiltroDTO;
 import com.publica.tuanuncio.dto.get.GetUsuarioDTO;
-import com.publica.tuanuncio.dto.post.PostUsuarioDTO;
-import com.publica.tuanuncio.model.Usuario;
+import com.publica.tuanuncio.dto.post.CrearUsuarioDTO;
 import com.publica.tuanuncio.service.IUserAdminService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +28,7 @@ public class AdminController {
     //CREA USUARIO ADMIN
     @PostMapping("/crear")
     @Operation(summary = "crea un usuario con role 'ADMIN'.")
-    public ResponseEntity<String> crearAdmin(@Valid @RequestBody PostUsuarioDTO admin){
+    public ResponseEntity<String> crearAdmin(@Valid @RequestBody CrearUsuarioDTO admin){
         adminService.crearAdmin(admin);
         return ResponseEntity.status(HttpStatus.CREATED).body("Su usuario 'admin' ha sido creado con exito!");
     }
@@ -39,7 +37,7 @@ public class AdminController {
     @PreAuthorize("hasRole ('ADMIN')")
     @GetMapping("/ver_usuario/{idUsuario}")
     @Operation(summary = "Muestra los datos de un usuario por id")
-    public ResponseEntity<Usuario> verUsuarioPorId(@PathVariable Long idUsuario){
+    public ResponseEntity<GetUsuarioDTO> verUsuarioPorId(@PathVariable Long idUsuario){
         return ResponseEntity.ok(adminService.verUsuario(idUsuario));
     }
 
@@ -58,7 +56,7 @@ public class AdminController {
     @PreAuthorize("hasRole ('ADMIN')")
     @PutMapping("/editar_admin")
     @Operation(summary = "Edita los datos del administrador.")
-    public ResponseEntity<String> editarAdmin(@Valid @RequestBody PostUsuarioDTO usuarioDTO, HttpSession session){
+    public ResponseEntity<String> editarAdmin(@Valid @RequestBody CrearUsuarioDTO usuarioDTO, HttpSession session){
         adminService.editarAdmin(session,usuarioDTO);
         return ResponseEntity.ok("Su usuario 'admin' ha sido editado correctamente!");
     }

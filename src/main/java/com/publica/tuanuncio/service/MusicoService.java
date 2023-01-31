@@ -1,7 +1,8 @@
 package com.publica.tuanuncio.service;
 
-import com.publica.tuanuncio.dto.post.PostMusicoDTO;
-import com.publica.tuanuncio.dto.post.PostUsuarioDTO;
+import com.publica.tuanuncio.dto.post.CrearMusicoDTO;
+import com.publica.tuanuncio.dto.post.EditarMusicoDTO;
+import com.publica.tuanuncio.dto.post.CrearUsuarioDTO;
 import com.publica.tuanuncio.dto.get.GetMusicoDTO;
 import com.publica.tuanuncio.exceptionHandler.model.BadRequestException;
 import com.publica.tuanuncio.model.Musico;
@@ -35,7 +36,8 @@ public class MusicoService implements IMusicoService {
 
     // CREA UN PERFIL CON ROLE_USER + ROLE_MUSICO
     @Override
-    public void crearMusico(HttpSession session, Musico musico) {
+    public void crearMusico(HttpSession session, CrearMusicoDTO musicoDTO) {
+        var musico = modelMapper.map(musicoDTO, Musico.class);
         musico.setUnUsuario(this.actualizarUsuario(session));
         musicoRepository.save(musico);
     }
@@ -53,7 +55,7 @@ public class MusicoService implements IMusicoService {
 
     //EDITA TODOS LOS DATOS DEL USUARIO MUSICO
     @Override
-    public void editarUsuario(HttpSession session, PostMusicoDTO musicoDTO) {
+    public void editarUsuario(HttpSession session, EditarMusicoDTO musicoDTO) {
         var usuario = this.userSession(session);
 
         // Se comprueba que los datos ingresados sean correctos
@@ -123,7 +125,7 @@ public class MusicoService implements IMusicoService {
        -QUE EL EMAIL Y USERNAME SEAN IGUALES A LOS DATOS DEL USUARIO QUE SE QUIERE EDITAR
        -QUE LOS DATOS INGRESADOS SEAN CORRECTOS
     */
-    public void validarDatosAlEditar(PostUsuarioDTO usuario, String usernameSession, String emailSession) {
+    public void validarDatosAlEditar(CrearUsuarioDTO usuario, String usernameSession, String emailSession) {
         if ((usuarioRepository.existsByUsername(usuario.getUsername())
                 && !usuario.getUsername().equals(usernameSession)) ||
                 (usuarioRepository.existsByEmail(usuario.getEmail()) && !usuario.getEmail().equals(emailSession))) {

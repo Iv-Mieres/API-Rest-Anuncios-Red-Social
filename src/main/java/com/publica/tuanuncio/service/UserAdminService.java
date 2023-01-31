@@ -2,7 +2,7 @@ package com.publica.tuanuncio.service;
 
 import com.publica.tuanuncio.dto.FiltroDTO;
 import com.publica.tuanuncio.dto.get.GetUsuarioDTO;
-import com.publica.tuanuncio.dto.post.PostUsuarioDTO;
+import com.publica.tuanuncio.dto.post.CrearUsuarioDTO;
 import com.publica.tuanuncio.exceptionHandler.model.BadRequestException;
 import com.publica.tuanuncio.model.Usuario;
 import com.publica.tuanuncio.repository.*;
@@ -40,9 +40,10 @@ public class UserAdminService implements IUserAdminService {
     @Autowired
     private ModelMapper modelMapper;
 
+
     // CREA UN USUARIO ADMIN
     @Override
-    public void crearAdmin(PostUsuarioDTO usuario) {
+    public void crearAdmin(CrearUsuarioDTO usuario) {
         this.validarDatos(usuario);
         var user = modelMapper.map(usuario, Usuario.class);
 
@@ -57,7 +58,7 @@ public class UserAdminService implements IUserAdminService {
 
     //CREA UN USUARIO CON 'ROLE_USER'
     @Override
-    public void crearUsuario(PostUsuarioDTO usuario) {
+    public void crearUsuario(CrearUsuarioDTO usuario) {
         this.validarDatos(usuario);
         var user = modelMapper.map(usuario, Usuario.class);
         user.setRoles(Set.of(roleRepository.findByRoleAuthority("USER")));
@@ -68,9 +69,11 @@ public class UserAdminService implements IUserAdminService {
 
     //MUESTRA UN USUARIO POR ID
     @Override
-    public Usuario verUsuario(Long idUsuario){
-      return userAdminRepository.findById(idUsuario)
+    public GetUsuarioDTO verUsuario(Long idUsuario){
+      var usuario = userAdminRepository.findById(idUsuario)
               .orElseThrow(() -> new BadRequestException("El usuario con id: " + idUsuario + " no se encuentra registrado."));
+      return modelMapper.map(usuario, GetUsuarioDTO.class);
+
     }
 
     //MUESTRA UNA LISTA DE USUARIOS PAGINADOS QUE PUEDE FILTRARSE POR ID, EMAIL Y/O USERNAME
@@ -85,7 +88,7 @@ public class UserAdminService implements IUserAdminService {
 
     //EDITAR DATOS DE ADMINISTRADOR
     @Override
-    public void editarAdmin(HttpSession session, PostUsuarioDTO usuarioDTO) {
+    public void editarAdmin(HttpSession session, CrearUsuarioDTO usuarioDTO) {
         var usuario = (Usuario) session.getAttribute("usersession");
         this.validarAlEditar(usuarioDTO, usuario.getUsername(), usuario.getEmail());
 
@@ -131,7 +134,7 @@ public class UserAdminService implements IUserAdminService {
 
     /* VALIDA QUE EL EMAIL Y USERNAME INGRESADOS NO EXISTAN EN LA BASE DE DATOS
        Y QUE LOS DATOS INGRESADOS SEAN CORRECTOS AL GUARDAR*/
-    public void validarDatos(PostUsuarioDTO usuario) {
+    public void validarDatos(CrearUsuarioDTO usuario) {
         if (userAdminRepository.existsByUsername(usuario.getUsername())) {
             throw new BadRequestException("El username " + usuario.getUsername() + " ya se encuentra registrado.");
         }
@@ -147,7 +150,7 @@ public class UserAdminService implements IUserAdminService {
     }
 
     //VALIDA QUE LOS DATOS INGRESADOS SEAN CORRECTOS AL EDITAR
-    public void validarAlEditar(PostUsuarioDTO usuario, String username, String email){
+    public void validarAlEditar(CrearUsuarioDTO usuario, String username, String email){
         if ((userAdminRepository.existsByUsername(usuario.getUsername()) && !usuario.getUsername().equals(username))
                 || (userAdminRepository.existsByEmail(usuario.getEmail()) && !usuario.getEmail().equals(email))) {
             throw new BadRequestException("El username o email ingresados ya se encuentran registrados.");

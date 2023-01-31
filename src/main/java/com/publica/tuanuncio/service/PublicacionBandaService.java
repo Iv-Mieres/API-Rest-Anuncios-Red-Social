@@ -1,6 +1,7 @@
 package com.publica.tuanuncio.service;
 
 import com.publica.tuanuncio.dto.FiltroDTO;
+import com.publica.tuanuncio.dto.PublicacionDTO;
 import com.publica.tuanuncio.dto.get.GetPublicacionMusicoDTO;
 import com.publica.tuanuncio.exceptionHandler.model.BadRequestException;
 import com.publica.tuanuncio.model.Publicacion;
@@ -31,9 +32,10 @@ public class PublicacionBandaService implements IPublicacionBandaService {
 
     //CREAR UNA PUBLICACIÓN COMO BANDA
     @Override
-    public void crearPublicacion(Publicacion publicacion, HttpSession session) {
+    public void crearPublicacion(PublicacionDTO publicacionDTO, HttpSession session) {
         var usuario = this.userSession(session);
-        this.validarFecha(publicacion.getFechaPublicacion());
+        this.validarFecha(publicacionDTO.getFechaPublicacion());
+        var publicacion = modelMapper.map(publicacionDTO, Publicacion.class);
         publicacion.setBanda(usuario.getPerfilBanda());
         publicacionRepository.save(publicacion);
     }
@@ -52,10 +54,11 @@ public class PublicacionBandaService implements IPublicacionBandaService {
 
     //EDITA UNA PUBLICACIÓN
     @Override
-    public void editarPublicacion(Publicacion publicacion, HttpSession session) {
+    public void editarPublicacion(PublicacionDTO publicacionDTO, HttpSession session) {
         var usuario = this.userSession(session);
-        this.validarFecha(publicacion.getFechaPublicacion());
-        if(this.usuarioBDIgualUsuarioSession(publicacion.getIdPublicacion(), usuario)){
+        this.validarFecha(publicacionDTO.getFechaPublicacion());
+        if(this.usuarioBDIgualUsuarioSession(publicacionDTO.getIdPublicacion(), usuario)){
+            var publicacion = modelMapper.map(publicacionDTO, Publicacion.class);
             publicacion.setBanda(usuario.getPerfilBanda());
             publicacionRepository.save(publicacion);
         }

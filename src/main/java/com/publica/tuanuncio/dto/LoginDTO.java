@@ -1,4 +1,4 @@
-package com.publica.tuanuncio.dto.post;
+package com.publica.tuanuncio.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostLoginDTO {
+public class LoginDTO {
 
 	private String username;
 	private String password;

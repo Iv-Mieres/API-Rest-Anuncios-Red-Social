@@ -7,8 +7,9 @@ import java.util.Set;
 import javax.servlet.http.HttpSession;
 
 import com.publica.tuanuncio.dto.get.GetBandaDTO;
-import com.publica.tuanuncio.dto.post.PostBandaDTO;
-import com.publica.tuanuncio.dto.post.PostUsuarioDTO;
+import com.publica.tuanuncio.dto.post.CrearBandaDTO;
+import com.publica.tuanuncio.dto.post.EditarBandaDTO;
+import com.publica.tuanuncio.dto.post.CrearUsuarioDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,7 +40,8 @@ public class BandaService implements IBandaService {
 
     // CREA UN PERFIL CON ROLE_USER + ROLE_BANDA
     @Override
-    public void crearBanda(HttpSession session, Banda banda) {
+    public void crearBanda(HttpSession session, CrearBandaDTO bandaDTO) {
+        var banda = modelMapper.map(bandaDTO, Banda.class);
         banda.setUnUsuario(this.actualizarUsuario(session));
         bandaRepository.save(banda);
     }
@@ -57,7 +59,7 @@ public class BandaService implements IBandaService {
 
     //EDITA TODOS LOS DATOS DEL USUARIO BANDA
     @Override
-    public void editarUsuario(HttpSession session, PostBandaDTO bandaDTO) {
+    public void editarUsuario(HttpSession session, EditarBandaDTO bandaDTO) {
 
         var usuario = this.userSession(session);
         this.validarDatosAlEditar(bandaDTO.getUsuario(), usuario.getUsername(), usuario.getEmail());
@@ -127,7 +129,7 @@ public class BandaService implements IBandaService {
        -QUE EL EMAIL Y USERNAME INGRESADOS NO EXISTAN EN LA BASE DE DATOS
        -QUE EL EMAIL Y USERNAME SEAN IGUALES A LOS DATOS DEL USUARIO QUE SE QUIERE EDITAR
        -QUE LOS DATOS INGRESADOS SEAN CORRECTOS */
-    public void validarDatosAlEditar(PostUsuarioDTO usuario, String username, String email) {
+    public void validarDatosAlEditar(CrearUsuarioDTO usuario, String username, String email) {
         if ((usuarioRepository.existsByUsername(usuario.getUsername()) && !usuario.getUsername().equals(username))
                 || (usuarioRepository.existsByEmail(usuario.getEmail()) && !usuario.getEmail().equals(email))) {
             throw new BadRequestException("El username o email ingresados ya se encuentran registrados.");

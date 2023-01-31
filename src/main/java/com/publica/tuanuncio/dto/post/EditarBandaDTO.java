@@ -10,9 +10,10 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostBandaDTO {
+public class EditarBandaDTO {
 
-	private PostUsuarioDTO usuario;
+	
+	private CrearUsuarioDTO usuario;
 	@NotNull(message = "No puede estar vacío")
 	@Size(min = 4, max = 50, message = "Debe contener entre 4 y 50 caracteres")
 	private String provincia;

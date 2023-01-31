@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostUsuarioDTO {
+public class CrearUsuarioDTO {
 
 	@NotNull(message = "No puede estar vacio")
 	@Size(min = 4, max = 50, message = "Debe contener entre 4 y 50 caracteres")

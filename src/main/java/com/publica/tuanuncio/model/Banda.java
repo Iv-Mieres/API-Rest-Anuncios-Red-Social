@@ -30,6 +30,7 @@ public class Banda extends PerfilUsuario{
 	@NotNull(message = "No puede estar vacio")
 	@Size(min= 3, max = 50, message = "Debe contener entre 3 y 50 caracteres")
 	private String nombreBanda;
+
 	@OneToOne
 	@JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", unique = true )
 	@JsonIgnoreProperties(value = "perfilBanda")
