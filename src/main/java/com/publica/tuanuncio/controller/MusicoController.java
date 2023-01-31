@@ -6,7 +6,6 @@ import com.publica.tuanuncio.dto.post.EditarMusicoDTO;
 import com.publica.tuanuncio.dto.FiltroDTO;
 import com.publica.tuanuncio.dto.get.GetMusicoDTO;
 import com.publica.tuanuncio.dto.get.GetPublicacionBandaDTO;
-import com.publica.tuanuncio.model.Musico;
 import com.publica.tuanuncio.service.IMusicoService;
 import com.publica.tuanuncio.service.IPublicacionMusicoService;
 import io.swagger.v3.oas.annotations.Operation;

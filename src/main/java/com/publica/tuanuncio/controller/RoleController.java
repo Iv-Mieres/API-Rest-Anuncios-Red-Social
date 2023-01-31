@@ -1,6 +1,7 @@
 package com.publica.tuanuncio.controller;
 
-import com.publica.tuanuncio.model.Role;
+import com.publica.tuanuncio.dto.get.GetRoleDTO;
+import com.publica.tuanuncio.dto.post.CrearYEditarRoleDTO;
 import com.publica.tuanuncio.service.IRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class RoleController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear_role")
     @Operation(summary = "Crea un role")
-    public ResponseEntity<String> crearRole(@Valid @RequestBody Role role){
+    public ResponseEntity<String> crearRole(@Valid @RequestBody CrearYEditarRoleDTO role){
         roleService.crearRole(role);
         return ResponseEntity.status(HttpStatus.CREATED).body("El role se creó correctamente!");
     }
@@ -32,7 +33,7 @@ public class RoleController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/ver_roles")
     @Operation(summary = "Muestra roles")
-    public ResponseEntity<List<Role>> roles(){
+    public ResponseEntity<List<GetRoleDTO>> roles(){
         return ResponseEntity.ok(roleService.roles());
     }
 
@@ -40,7 +41,7 @@ public class RoleController {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar_role")
     @Operation(summary = "Edita un role por id.")
-    public ResponseEntity<String> editarRole(@Valid @RequestBody Role role){
+    public ResponseEntity<String> editarRole(@Valid @RequestBody CrearYEditarRoleDTO role){
         roleService.editarRole(role);
         return ResponseEntity.ok("El role se editó correctamente!");
     }

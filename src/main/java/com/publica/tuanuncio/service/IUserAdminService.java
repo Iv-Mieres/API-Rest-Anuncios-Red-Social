@@ -3,7 +3,6 @@ package com.publica.tuanuncio.service;
 import com.publica.tuanuncio.dto.FiltroDTO;
 import com.publica.tuanuncio.dto.get.GetUsuarioDTO;
 import com.publica.tuanuncio.dto.post.CrearUsuarioDTO;
-import com.publica.tuanuncio.model.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

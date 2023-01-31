@@ -19,8 +19,9 @@ public class CrearBandaDTO {
     @Size(min = 4, max = 50, message = "Debe contener entre 4 y 50 caracteres")
     private String localidad;
     @NotNull(message = "No puede estar vacío")
+    @Size(min = 10 ,max = 60, message = "Debe contener entre 10 y 60 caracteres")
     private String linkRedSocial;
     @NotNull(message = "No puede estar vacio")
-    @Size(min= 3, message = "Debe contener un minimo de 3 caracteres")
+    @Size(min= 3, max = 50, message = "Debe contener entre 3 y 50 caracteres")
     private String nombreBanda;
 }
