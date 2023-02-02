@@ -1,4 +1,7 @@
-![encuentro musical](https://user-images.githubusercontent.com/103857812/215369878-abcfc375-fa17-4320-9e78-208166311015.png)
+
+<div align="center">
+    <img width="60%" src="https://user-images.githubusercontent.com/103857812/215369878-abcfc375-fa17-4320-9e78-208166311015.png"</img>
+</div>
 
 ### Qué es Encuentro Musical?
 ***Encuentro Musical es un sistema de publicaciones orientado a resolver las necesidades que tienen muschos músicos y bandas a la hora de búscar nuevos
@@ -12,8 +15,6 @@ integrantes para sus proyectos personales.
  Solo crea tu usuario ingresando un `Email` y un `Username` (*los cuales deberán ser únicos*) elige el perfil que desees útilizar `Músico` o `Banda`, 
  rellena el formulario con los datos necesarios y ya estarás listo para crear tu primer anuncio ó visualizar los anuncios de otros usuarios.
   >Recuerda que podrás editar tu anuncio en cualquier momento, así como tus datos de usuario.
-  
-  `insertar video explicativo de uso`
   
   
   # Información Tecnica del proyecto
@@ -35,7 +36,10 @@ integrantes para sus proyectos personales.
 
   ## Diagrama UML 
   
-  ![Diagramadeclase](https://user-images.githubusercontent.com/103857812/215926043-81aed847-f9ca-4c95-b7a4-54f4a78cc2e6.png)
+<div align="left">
+    <img width="60%" src="https://user-images.githubusercontent.com/103857812/216205026-db6c2d95-8b34-4bcb-b84a-74af54399d73.png"</img>
+</div>        
+
 
 
 >El diagrama de clase UML muestra el uso de herencia en las tablas `Musico` `Banda` siendo la tabla `PerfilUsuario` la clase abstracta "padre". Para que la herencia
@@ -44,14 +48,19 @@ implementada por la clase Usuario para que Spring Security se pueda encargar de 
 
  ## Diagrama ER
  
-
-![DiagramaBD](https://user-images.githubusercontent.com/103857812/215925761-a2456020-e18a-4766-bec5-91f041928cfa.png)
+<div align="left">
+    <img width="60%" src="https://user-images.githubusercontent.com/103857812/216206695-8bd73350-500a-4c72-87f0-754f72e22ccc.png"</img>
+</div> 
 
 >Para la creación del modelado se utilizó `Hibernate` `JPA` implementando las diferentes annotations para la creación y realción de tablas. Como por ejemplo:
 >@Entity, @JpaRepository, @ManyToMany, etc. Támbien se utiizó @Id Y @GeneratedValue para que sea Hibernate quien se encargue de asignar valor a los diferentes
 >id que poseen cada tabla.
 
 
+[<img src="https://img.youtube.com/vi/0SE7SZPPLlM/maxresdefault.jpg" width="40%">](https://youtu.be/0SE7SZPPLlM)
+
+
+<video src="https://user-images.githubusercontent.com/(https://youtu.be/0SE7SZPPLlM"></video>
 
 ## README EN CONSTRUCCIÓN . . .
   
