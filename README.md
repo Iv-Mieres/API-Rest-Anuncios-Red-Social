@@ -68,7 +68,7 @@ INSERT INTO roles VALUES(2, 'USER')
  ```
 Se creó el fichero `data.sql` para que al levantar la aplicación por primera vez, los roles "ADMIN" y "USER" sean guardados de forma automatica en la BD, de esta forma se evita el problema de no tener acceso al endpoint "crear roles". Este problema surge al securizar dicho endpoint con Spring Security y por la composición que existe entre Usuario y Role explicada en el diagrama UML. Un Usuario no puede existir sin un Role. Entonces, como creo los roles sin el usuario "ADMIN"? 
 
-El `data.sql` se encarga de crear los roles necesarios para poder crear un Usuario con role de administrador y que de esa forma el administrador luego se encargue de crear los roles faltantes. Sin esta configuració nunca se podria crear el role "ADMIN" y por lo tanto nunca se podria crear el Usuario "ADMIN"
+El `data.sql` se encarga de crear los roles necesarios para poder crear un Usuario con role de administrador y que de esa forma el administrador luego se encargue de crear los roles faltantes. Sin esta configuración nunca se podria crear el role "ADMIN" y por lo tanto nunca se podria crear el Usuario "ADMIN"
 
 ## <sub> - Patrón Specification - </sub>
 
@@ -97,7 +97,6 @@ Este patrón se encarga de realizar diferentes tipos de busquedas en la base de 
 
 
 
-## README EN CONSTRUCCIÓN . . .
   
  
 
