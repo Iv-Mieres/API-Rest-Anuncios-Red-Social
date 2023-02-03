@@ -79,7 +79,7 @@ public class MusicoController {
     }
 
     //MOSTRAR PUBLICACIONES CREADAS POR 'ROLE_MUSICO', PAGINADAS Y/o FILTRADAS
-    @PreAuthorize("hasRole ('MUSICO')")
+    @PreAuthorize("hasAnyRole ('MUSICO', 'BANDA', 'MUSICO')")
     @GetMapping("/ver_publicaciones_bandas")
     @Operation(summary = "Devuelve una lista de publicaciones paginadas y/o filtradas. La utilización de los filtros es opcional.")
     public ResponseEntity<Page<GetPublicacionBandaDTO>> verPublicacionesDeBandas(

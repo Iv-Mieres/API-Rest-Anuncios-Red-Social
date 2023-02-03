@@ -48,6 +48,7 @@ public class PublicacionBandaService implements IPublicacionBandaService {
                 .stream()
                 .filter(publi -> publi.getMusico() != null)
                 .map(publi -> modelMapper.map(publi, GetPublicacionMusicoDTO.class))
+                .distinct()
                 .collect(Collectors.toList());
         return new PageImpl<GetPublicacionMusicoDTO>(publicaciones, pageable, publicaciones.size());
     }
