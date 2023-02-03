@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"username\" : \"admin\",\r\n\"password\" : \"admin123\",\r\n\"repeatPassword\" : \"admin123\",\r\n\"email\" : \"admin@encuentro-musical.com\",\r\n\"repeatEmail\" :  \"admin@encuentro-musical.com\"\r\n}",
+							"raw": "{\r\n\r\n\"username\" : \"admin\",\r\n\"password\" : \"admin123\",\r\n\"repeatPassword\" : \"admin123\",\r\n\"email\" : \"admin@encuentro-musical.com\",\r\n\"repeatEmail\" :  \"admin@encuentro-musical.com\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"roleAuthority\" : \"ADMIN\"\r\n}",
+							"raw": "{\r\n    \"roleAuthority\" : \"MUSICO\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -82,7 +82,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/admin/ver_lista_usuarios?page&size",
+							"raw": "localhost:8080/admin/ver_lista_usuarios?page=0&size=3",
 							"host": [
 								"localhost"
 							],
@@ -94,12 +94,32 @@
 							"query": [
 								{
 									"key": "page",
-									"value": null
+									"value": "0"
 								},
 								{
 									"key": "size",
-									"value": null
+									"value": "3"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver Usuario por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/admin/ver_usuario/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"ver_usuario",
+								"1"
 							]
 						}
 					},
@@ -185,7 +205,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"username\" : \"usuario\",\r\n\"password\" : \"prueba123\",\r\n\"repeatPassword\" : \"prueba123\",\r\n\"email\" : \"usuario@gmail.com\",\r\n\"repeatEmail\" :  \"usuario@gmail.com\"\r\n}",
+							"raw": "{\r\n    \r\n\"username\" : \"usuario\",\r\n\"password\" : \"prueba123\",\r\n\"repeatPassword\" : \"prueba123\",\r\n\"email\" : \"usuario@gmail.com\",\r\n\"repeatEmail\" :  \"usuario@gmail.com\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -293,7 +313,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n\"nombreBanda\" : \"Nueva Banda\",\r\n\"linkRedSocial\" : \"nuevabanda.com/banda\", \r\n\"provincia\" : \"Buenos Aires\",\r\n\"localidad\" : \"Capital\"\r\n\r\n}",
+							"raw": "{\r\n\r\n\"nombreBanda\" : \"Banda\",\r\n\"linkRedSocial\" : \"banda.com/banda\", \r\n\"provincia\" : \"Cordoba\",\r\n\"localidad\" : \"Capital\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -321,7 +341,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"titulo\" : \"titulo de prueba\",\r\n\"fechaPublicacion\" : \"2022-11-11\",\r\n\"generoMusical\" : \"Trap\",\r\n\"remunerado\" : \"false\",\r\n\"descripcion\" : \"Creando anuncio de prueba\"\r\n\r\n}",
+							"raw": "{\r\n\"titulo\" : \"Prueba anuncio banda\",\r\n\"fechaPublicacion\" : \"2023-02-03\",\r\n\"generoMusical\" : \"Metal\",\r\n\"remunerado\" : \"false\",\r\n\"descripcion\" : \"Publicación de Banda 2\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -349,7 +369,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"provincia\" : \"Buenos Aires\", \r\n\"localidad\" : \"Alt. Brown\",\r\n\"linkRedSocial\" : \"prueba.com/prueba\",\r\n\"nombreBanda\" : \"Metallica\",\r\n\"usuario\" :\r\n {\r\n    \"username\" : \"Editado\",\r\n    \"password\" : \"editado\",\r\n    \"repeatPassword\" : \"editado\",\r\n    \"email\" : \"editado@gmail.com\",\r\n    \"repeatEmail\" : \"editado@gmail.com\"\r\n}\r\n}",
+							"raw": "{\r\n\"provincia\" : \"Buenos Aires\", \r\n\"localidad\" : \"Alt. Brown\",\r\n\"linkRedSocial\" : \"prueba3.com/prueba\",\r\n\"nombreBanda\" : \"Metallica\",\r\n\"usuario\" :\r\n {\r\n    \"username\" : \"Editado\",\r\n    \"password\" : \"editado\",\r\n    \"repeatPassword\" : \"editado\",\r\n    \"email\" : \"editado@gmail.com\",\r\n    \"repeatEmail\" : \"editado@gmail.com\"\r\n}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -377,7 +397,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"idPublicacion\" : 1,\r\n\"titulo\" : \"Editando Anuncio\",\r\n\"fechaPublicacion\" : \"2023-01-22\",\r\n\"linkRedSocial\" : \"linkdeprueba/prueba.com\",\r\n\"generoMusical\" : \"Trap\",\r\n\"remunerado\" : \"true\",\r\n\"descripcion\" : \"Probando la edicion de un anuncio con una descripción un poco más larga para que se vea que se puede ingresar una descripción con un mínimo de 20 y un máximo de 500 caracteres. \"\r\n}",
+							"raw": "{\r\n\"idPublicacion\" : 20,\r\n\"titulo\" : \"Editando Anuncio\",\r\n\"fechaPublicacion\" : \"2023-02-03\",\r\n\"generoMusical\" : \"Trap\",\r\n\"remunerado\" : \"true\",\r\n\"descripcion\" : \"Probando la edicion de un anuncio con una descripción un poco más larga para que se vea que se puede ingresar una descripción con un mínimo de 20 y un máximo de 500 caracteres. \"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -404,7 +424,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/bandas/eliminar_mi_publicacion/45",
+							"raw": "localhost:8080/bandas/eliminar_mi_publicacion/20",
 							"host": [
 								"localhost"
 							],
@@ -412,7 +432,7 @@
 							"path": [
 								"bandas",
 								"eliminar_mi_publicacion",
-								"45"
+								"20"
 							]
 						}
 					},
@@ -455,7 +475,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/bandas/ver_publicaciones_musicos?page=&size",
+							"raw": "localhost:8080/bandas/ver_publicaciones_musicos?page=0&size=5",
 							"host": [
 								"localhost"
 							],
@@ -467,11 +487,11 @@
 							"query": [
 								{
 									"key": "page",
-									"value": ""
+									"value": "0"
 								},
 								{
 									"key": "size",
-									"value": null
+									"value": "5"
 								}
 							]
 						}
@@ -489,14 +509,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/musicos/mi_perfil",
+							"raw": "localhost:8080/musicos/ver_mi_perfil",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"musicos",
-								"mi_perfil"
+								"ver_mi_perfil"
 							]
 						}
 					},
@@ -509,7 +529,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n\"nombre\" : \"Musico\",\r\n\"apellido\" : \"Prueba\",\r\n\"provincia\" : \"Cordoba\",\r\n\"localidad\" : \"Capital\",\r\n\"instrumento\" : \"Piano\",\r\n\"linkRedSocial\" : \"musico/soy_musico.com\"\r\n\r\n}",
+							"raw": "{\r\n\r\n\"nombre\" : \"Musico3\",\r\n\"apellido\" : \"Prueba\",\r\n\"provincia\" : \"Buenos Aires\",\r\n\"localidad\" : \"Capital\",\r\n\"instrumento\" : \"Teclado\",\r\n\"linkRedSocial\" : \"musico2/soy_musico2.com\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -537,7 +557,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"titulo\" : \"Creando publicación de Músico\",\r\n\"fechaPublicacion\" : \"2023-01-29\",\r\n\"generoMusical\" : \"Pop\",\r\n\"remunerado\" : false,\r\n\"descripcion\" : \"Prueba para crear una publicación.\"\r\n\r\n}",
+							"raw": "{\r\n\"titulo\" : \"Publicación de Músico\",\r\n\"fechaPublicacion\" : \"2023-02-01\",\r\n\"generoMusical\" : \"Trap\",\r\n\"remunerado\" : false,\r\n\"descripcion\" : \"Prueba para crear una publicación.\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -565,7 +585,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n \"idPublicacion\" : 54,\r\n\"titulo\" : \"Editando publicacion de Musico\",\r\n\"fechaPublicacion\" : \"2023-01-23\",\r\n\"generoMusical\" : \"Melodico\",\r\n\"remunerado\" : \"true\",\r\n\"descripcion\" : \"probando la edicion de un anuncio\"\r\n\r\n}",
+							"raw": "{\r\n \"idPublicacion\" : 1,\r\n\"titulo\" : \"Editando publicacion de Musico\",\r\n\"fechaPublicacion\" : \"2023-01-29\",\r\n\"generoMusical\" : \"Metal\",\r\n\"remunerado\" : \"true\",\r\n\"descripcion\" : \"probando la edicion de un anuncio\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
