@@ -44,7 +44,7 @@ public class AdminController {
     //MUESTRA UNA LISTA DE USUARIOS PAGINADOS QUE PUEDE FILTRARSE POR ID, EMAIL Y/O USERNAME
     @PreAuthorize("hasRole ('ADMIN')")
     @GetMapping("/ver_lista_usuarios")
-    @Operation(summary = "Muestra una lsta de usuarios paginados y/o filtrados. La utilización de los filtros es opcional.")
+    @Operation(summary = "Muestra una lista de usuarios paginados y/o filtrados. La utilización de los filtros es opcional.")
     public ResponseEntity<Page<GetUsuarioDTO>> getUsuarios(
             @Parameter(description = "Las busquedas solo se pueden filtrar por username, email, role y/o eliminado. " +
                     "Si se coloca un valor null se ignora el filtrado.")
