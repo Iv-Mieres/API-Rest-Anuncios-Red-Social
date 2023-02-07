@@ -17,9 +17,9 @@ integrantes para sus proyectos personales.
   >  ## <sub> [Enlace a video de Youtube explicando parte del funcionamiento de la API](https://youtu.be/0SE7SZPPLlM) </sub>
   
   
-  # Información Tecnica del proyecto
+  # Información Técnica del proyecto
   
-  ### <sub> - Tecnologias aplicadas - </sub>
+  ### <sub> - Tecnologías aplicadas - </sub>
   
   - Java 17
   - Spring Boot 2
@@ -87,7 +87,10 @@ public Example extends JpaRepository<E, ID>, JpaSpecificationExecutor<E, ID>{}
  
  ## <sub> - Programación Funcional - </sub>
  
- En este proyecto se útilizó lambda con el objetivo de comparar su aplicación con respecto a la programación imperativa ya que es la primera vez que aplico lambda sobre un proyecto. No encontré grandes complicaciones al implementar lambda y aplicarlo sobre el proyecto me ayudó a comprender mucho mejor esta forma de programar. En resumen, se utilizó lambda como forma de práctica y desarrollo personal.     
+ En este proyecto se útilizó lambda con el objetivo de comparar su aplicación con respecto a la programación imperativa ya que es la primera vez que aplico lambda sobre un proyecto. No encontré grandes complicaciones al implementar lambda y aplicarlo sobre el proyecto me ayudó a comprender mucho mejor esta forma de programar. En resumen, se utilizó lambda como forma de práctica y desarrollo personal. 
+ 
+ ## Autor 
+ [<sub>Ivan Mieres</sub>](https://github.com/Iv-Mieres)
  
  
 
