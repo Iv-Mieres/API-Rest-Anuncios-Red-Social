@@ -78,17 +78,6 @@ public class MusicoController {
         return ResponseEntity.ok("Su publicación fue creada con exito!");
     }
 
-    //MOSTRAR PUBLICACIONES CREADAS POR 'ROLE_MUSICO', PAGINADAS Y/o FILTRADAS
-    @PreAuthorize("hasAnyRole ('MUSICO', 'BANDA', 'MUSICO')")
-    @GetMapping("/ver_publicaciones_bandas")
-    @Operation(summary = "Devuelve una lista de publicaciones paginadas y/o filtradas. La utilización de los filtros es opcional.")
-    public ResponseEntity<Page<GetPublicacionBandaDTO>> verPublicacionesDeBandas(
-            @Parameter(description = "Las busquedas solo se pueden filtrar por fechaPublicacion, generoMusical, " +
-                    "provincia y/o localidad. Si se coloca un valor null se ignora el filtrado.")
-            @RequestBody FiltroDTO filtro, Pageable pageable){
-        return ResponseEntity.ok(publicacionService.verPublicaciones(filtro, pageable));
-    }
-
     //EDITAR PUBLICACIÓN
     @PreAuthorize("hasRole ('MUSICO')")
     @PutMapping("/editar_mi_publicacion")

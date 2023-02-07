@@ -439,7 +439,7 @@
 					"response": []
 				},
 				{
-					"name": "Eliminar Perfil",
+					"name": "Eliminar Usuario",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -452,47 +452,6 @@
 							"path": [
 								"bandas",
 								"eliminar_usuario"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Ver Publicaciones de Musicos",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\"fechaPublicacion\" : null,\r\n\"generoMusical\" : null,\r\n\"provincia\" : null,\r\n\"localidad\" : null,\r\n\"instrumento\" : null\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/bandas/ver_publicaciones_musicos?page=0&size=5",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"bandas",
-								"ver_publicaciones_musicos"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "0"
-								},
-								{
-									"key": "size",
-									"value": "5"
-								}
 							]
 						}
 					},
@@ -654,7 +613,73 @@
 					"response": []
 				},
 				{
-					"name": "Ver Publicaciones de Bandas",
+					"name": "Elimiinar Publicación",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/musicos/eliminar_mi_publicacion/20",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"musicos",
+								"eliminar_mi_publicacion",
+								"20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publicaciones",
+			"item": [
+				{
+					"name": "Publicaciones de Musicos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"fechaPublicacion\" : null,\r\n\"generoMusical\" : null,\r\n\"provincia\" : null,\r\n\"localidad\" : null,\r\n\"instrumento\" : null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/publicaciones/musicos?page=0&size=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"publicaciones",
+								"musicos"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publicaciones de Bandas",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -671,14 +696,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/musicos/ver_publicaciones_bandas?page=&size=",
+							"raw": "localhost:8080/publicaciones/bandas?page=&size=",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"musicos",
-								"ver_publicaciones_bandas"
+								"publicaciones",
+								"bandas"
 							],
 							"query": [
 								{
