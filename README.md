@@ -4,22 +4,19 @@
 </div>
 
 ### Qué es Encuentro Musical?
-***Encuentro Musical es un sistema de publicaciones orientado a resolver las necesidades que tienen muschos músicos y bandas a la hora de búscar nuevos
-integrantes para sus proyectos personales.
- Quienes se registren en la plataforma podrán crear, consultar, editar y eliminar sus publicaciones cuando lo deseen, así como támbien, 
- cosultar las publicaciones de otros usuarios a través de un sistema de filtrado para que la búsqueda se adapte mejor a sus necesidades.
- Cada usuario tendrá la opción de elegir y crear un perfil acorde a su situación y podrá editar y eliminar su cuenta cuando lo deseé.***
+***Encuentro Musical es un sistema de publicación de anuncios orientado a resolver las necesidades que los músicos y bandas tienen a la hora de buscar nuevos integrantes que quieran sumarse a sus proyectos personales.
+ Los músicos ó bandas que se registren en la plataforma podrán crear sus propias publicaciones, de acuerdo a lo que necesiten ó consultar las publicaciones de otros usuarios a través de un sistema de filtrado para que las búsquedas se adapten mejor a sus necesidades.***
  
  ### Como útilizar Encuentro Musical?
  
-  Solo crea tu usuario ingresando un `Email` y un `Username` (*los cuales deberán ser únicos*) elige el perfil que desees útilizar `Músico` o `Banda`, 
+  Solo crea tu usuario ingresando un `Email` y un `Username` (*los cuales deberán ser únicos*) elige el perfil que desees útilizar `Músico` ó `Banda`, 
  rellena el formulario con los datos necesarios y ya estarás listo para crear tu primer anuncio ó visualizar los anuncios de otros usuarios.
   >  ## <sub> [Enlace a video de Youtube explicando parte del funcionamiento de la API](https://youtu.be/0SE7SZPPLlM) </sub>
   
   
-  # Información Tecnica del proyecto
+  # Información Técnica del proyecto
   
-  ### <sub> - Tecnologias aplicadas - </sub>
+  ### <sub> - Tecnologías aplicadas - </sub>
   
   - Java 17
   - Spring Boot 2
@@ -67,9 +64,15 @@ En la clase `Usuario` se puede ver las diferentes relaciones entre Musico, Banda
 INSERT INTO roles VALUES(1, 'ADMIN')
 INSERT INTO roles VALUES(2, 'USER')
  ```
- Se creó el fichero `data.sql` para que al levantar la aplicación por primera vez los roles "ADMIN" y "USER" sean guardados de forma automatica en la BD, de esta forma se evita el problema de no tener acceso al endpoint "crear roles". Este problema surge al securizar dicho endpoint con Spring Security y por la composición que existe entre Usuario y Role explicada en el diagrama UML. Un Usuario no puede existir sin un Role. Entonces, como creo los roles sin el usuario "ADMIN"? 
+ Se creó el fichero `data.sql` para que al levantar la aplicación por primera vez los roles "ADMIN" y "USER" sean guardados de forma automatica en la BD, de esta forma se evita el problema de no tener acceso al endpoint "crear roles". Este problema surge al securizar dicho endpoint con Spring Security  para que solo el usuario administrador ueda acceder a él y por la composición que existe entre Usuario y Role explicada en el diagrama UML. Un Usuario no puede existir sin un Role. Entonces, como creo los roles sin el usuario "ADMIN"? 
 
-El `data.sql` se encarga de crear los roles, luego se podrá crear un Usuario con role "ADMIN" el cual fue proporcionado por el data.sql y de esa forma el administrador luego puede encargarse de crear los roles faltantes. Sin esta configuración nunca se podria crear el role "ADMIN" y por lo tanto nunca se podria crear el Usuario "ADMIN"
+El `data.sql` se encarga de crear los roles "ADMIN" y "USER", luego se podrá crear el usuario administrador asignandolé el role "ADMIN" creado por el data.sql y de esa forma el usuario administrador se encargará de crear los roles faltantes. Sin esta configuración nunca se podria crear, de forma manual, el role "ADMIN" y por lo tanto, nunca se podria crear el Usuario "ADMIN".
+
+ ## <sub> - Creación de multiroles - </sub>
+ 
+ El sistema de roles está pensado para crear diferentes jerarquias. Al crear un nuevo Usuario se le asignará automaticamente el role "USER" y luego este podrá seleccionar un segundo role "BANDA" ó "MUSICO" asignandole así dos roles distintos "USER - BANDA" o "USER - MUSICO". Cada role dará acceso a diferentes funciones de la aplicación. 
+ 
+ El usuario "ADMIN" solo tendrá un role y acceso a funciones especificas del programa.
 
 ## <sub> - Patrón Specification - </sub>
 
@@ -79,15 +82,12 @@ public Example extends JpaRepository<E, ID>, JpaSpecificationExecutor<E, ID>{}
 
  Este patrón se encarga de realizar diferentes tipos de busquedas en la base de datos utilizando Criteria API de JPA. El patrón evita tener que crear una gran cantidad de metodos en el repository ó tener que útilizar nombres de metodos como por ejemplo `findByNameAndSurnameAndUsernameAnd...()` siendo poco legible y confuso.
  
- ## <sub> - Creación de multiroles - </sub>
- 
- El sistema de roles está pensado para crear diferentes jerarquias. Al crear un nuevo Usuario se le asignará automaticamente el role "USER" y luego este podrá seleccionar un segundo role "BANDA" ó "MUSICO" asignandole así dos roles distintos "USER - BANDA" o "USER - MUSICO". Cada role le dará acceso a diferentes funciones de la aplicación. 
- 
- El usuario "ADMIN" solo tendrá un role y acceso a funciones especificas del programa.
- 
  ## <sub> - Programación Funcional - </sub>
  
- En este proyecto se útilizó lambda con el objetivo de comparar su aplicación con respecto a la programación imperativa ya que es la primera vez que aplico lambda sobre un proyecto. No encontré grandes complicaciones al implementar lambda y aplicarlo sobre el proyecto me ayudó a comprender mucho mejor esta forma de programar. En resumen, se utilizó lambda como forma de práctica y desarrollo personal.     
+ En este proyecto se útilizó lambda con el objetivo de comparar su aplicación con respecto a la programación imperativa. No encontré grandes complicaciones al implementar lambda y aplicarlo sobre el proyecto me ayudó a comprender mucho mejor esta forma de programar. En resumen, se utilizó lambda como forma de práctica y desarrollo personal. 
+ 
+ ## Autor 
+ [<sub>Ivan Mieres</sub>](https://github.com/Iv-Mieres)
  
  
 
