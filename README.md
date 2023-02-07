@@ -4,15 +4,12 @@
 </div>
 
 ### Qué es Encuentro Musical?
-***Encuentro Musical es un sistema de publicaciones orientado a resolver las necesidades que tienen muschos músicos y bandas a la hora de búscar nuevos
-integrantes para sus proyectos personales.
- Quienes se registren en la plataforma podrán crear, consultar, editar y eliminar sus publicaciones cuando lo deseen, así como támbien, 
- cosultar las publicaciones de otros usuarios a través de un sistema de filtrado para que la búsqueda se adapte mejor a sus necesidades.
- Cada usuario tendrá la opción de elegir y crear un perfil acorde a su situación y podrá editar y eliminar su cuenta cuando lo deseé.***
+***Encuentro Musical es un sistema de publicación de anuncios orientado a resolver las necesidades que los músicos y bandas tienen a la hora de buscar nuevos integrantes que quieran sumarse a sus proyectos personales.
+ Los músicos ó bandas que se registren en la plataforma podrán crear sus propias publicaciones, de acuerdo a lo que necesiten ó consultar las publicaciones de otros usuarios a través de un sistema de filtrado para que las búsquedas se adapten mejor a sus necesidades.***
  
  ### Como útilizar Encuentro Musical?
  
-  Solo crea tu usuario ingresando un `Email` y un `Username` (*los cuales deberán ser únicos*) elige el perfil que desees útilizar `Músico` o `Banda`, 
+  Solo crea tu usuario ingresando un `Email` y un `Username` (*los cuales deberán ser únicos*) elige el perfil que desees útilizar `Músico` ó `Banda`, 
  rellena el formulario con los datos necesarios y ya estarás listo para crear tu primer anuncio ó visualizar los anuncios de otros usuarios.
   >  ## <sub> [Enlace a video de Youtube explicando parte del funcionamiento de la API](https://youtu.be/0SE7SZPPLlM) </sub>
   
