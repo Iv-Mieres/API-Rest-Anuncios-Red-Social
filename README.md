@@ -67,9 +67,15 @@ En la clase `Usuario` se puede ver las diferentes relaciones entre Musico, Banda
 INSERT INTO roles VALUES(1, 'ADMIN')
 INSERT INTO roles VALUES(2, 'USER')
  ```
- Se creó el fichero `data.sql` para que al levantar la aplicación por primera vez los roles "ADMIN" y "USER" sean guardados de forma automatica en la BD, de esta forma se evita el problema de no tener acceso al endpoint "crear roles". Este problema surge al securizar dicho endpoint con Spring Security y por la composición que existe entre Usuario y Role explicada en el diagrama UML. Un Usuario no puede existir sin un Role. Entonces, como creo los roles sin el usuario "ADMIN"? 
+ Se creó el fichero `data.sql` para que al levantar la aplicación por primera vez los roles "ADMIN" y "USER" sean guardados de forma automatica en la BD, de esta forma se evita el problema de no tener acceso al endpoint "crear roles". Este problema surge al securizar dicho endpoint con Spring Security  para que solo el usuario administrador ueda acceder a él y por la composición que existe entre Usuario y Role explicada en el diagrama UML. Un Usuario no puede existir sin un Role. Entonces, como creo los roles sin el usuario "ADMIN"? 
 
-El `data.sql` se encarga de crear los roles, luego se podrá crear un Usuario con role "ADMIN" el cual fue proporcionado por el data.sql y de esa forma el administrador luego puede encargarse de crear los roles faltantes. Sin esta configuración nunca se podria crear el role "ADMIN" y por lo tanto nunca se podria crear el Usuario "ADMIN"
+El `data.sql` se encarga de crear los roles "ADMIN" y "USER", luego se podrá crear el usuario administrador asignandolé el role "ADMIN" creado por el data.sql y de esa forma el usuario administrador se encargará de crear los roles faltantes. Sin esta configuración nunca se podria crear, de forma manual, el role "ADMIN" y por lo tanto, nunca se podria crear el Usuario "ADMIN".
+
+ ## <sub> - Creación de multiroles - </sub>
+ 
+ El sistema de roles está pensado para crear diferentes jerarquias. Al crear un nuevo Usuario se le asignará automaticamente el role "USER" y luego este podrá seleccionar un segundo role "BANDA" ó "MUSICO" asignandole así dos roles distintos "USER - BANDA" o "USER - MUSICO". Cada role dará acceso a diferentes funciones de la aplicación. 
+ 
+ El usuario "ADMIN" solo tendrá un role y acceso a funciones especificas del programa.
 
 ## <sub> - Patrón Specification - </sub>
 
@@ -79,15 +85,9 @@ public Example extends JpaRepository<E, ID>, JpaSpecificationExecutor<E, ID>{}
 
  Este patrón se encarga de realizar diferentes tipos de busquedas en la base de datos utilizando Criteria API de JPA. El patrón evita tener que crear una gran cantidad de metodos en el repository ó tener que útilizar nombres de metodos como por ejemplo `findByNameAndSurnameAndUsernameAnd...()` siendo poco legible y confuso.
  
- ## <sub> - Creación de multiroles - </sub>
- 
- El sistema de roles está pensado para crear diferentes jerarquias. Al crear un nuevo Usuario se le asignará automaticamente el role "USER" y luego este podrá seleccionar un segundo role "BANDA" ó "MUSICO" asignandole así dos roles distintos "USER - BANDA" o "USER - MUSICO". Cada role le dará acceso a diferentes funciones de la aplicación. 
- 
- El usuario "ADMIN" solo tendrá un role y acceso a funciones especificas del programa.
- 
  ## <sub> - Programación Funcional - </sub>
  
- En este proyecto se útilizó lambda con el objetivo de comparar su aplicación con respecto a la programación imperativa ya que es la primera vez que aplico lambda sobre un proyecto. No encontré grandes complicaciones al implementar lambda y aplicarlo sobre el proyecto me ayudó a comprender mucho mejor esta forma de programar. En resumen, se utilizó lambda como forma de práctica y desarrollo personal. 
+ En este proyecto se útilizó lambda con el objetivo de comparar su aplicación con respecto a la programación imperativa. No encontré grandes complicaciones al implementar lambda y aplicarlo sobre el proyecto me ayudó a comprender mucho mejor esta forma de programar. En resumen, se utilizó lambda como forma de práctica y desarrollo personal. 
  
  ## Autor 
  [<sub>Ivan Mieres</sub>](https://github.com/Iv-Mieres)
