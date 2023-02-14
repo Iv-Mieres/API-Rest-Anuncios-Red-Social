@@ -1,4 +1,4 @@
-`Versión 1.0` `Autor : Ivan Mieres` 
+`Versión 1.0` 
 
 <div align="center">
     <img width="60%" src="https://user-images.githubusercontent.com/103857812/215369878-abcfc375-fa17-4320-9e78-208166311015.png"</img>
