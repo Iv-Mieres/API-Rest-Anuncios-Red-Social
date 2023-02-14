@@ -2,17 +2,12 @@ package com.publica.tuanuncio.controller;
 
 import com.publica.tuanuncio.dto.PublicacionDTO;
 import com.publica.tuanuncio.dto.get.GetBandaDTO;
-import com.publica.tuanuncio.dto.get.GetPublicacionMusicoDTO;
 import com.publica.tuanuncio.dto.post.CrearBandaDTO;
 import com.publica.tuanuncio.dto.post.EditarBandaDTO;
-import com.publica.tuanuncio.dto.FiltroDTO;;
 import com.publica.tuanuncio.service.IBandaService;
 import com.publica.tuanuncio.service.IPublicacionBandaService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
