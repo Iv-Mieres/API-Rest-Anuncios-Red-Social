@@ -83,7 +83,7 @@ public Example extends JpaRepository<E, ID>, JpaSpecificationExecutor<E, ID>{}
 
  Este patrón se encarga de realizar diferentes tipos de busquedas en la base de datos utilizando Criteria API de JPA. El patrón evita tener que crear una gran cantidad de metodos en el repository ó tener que útilizar nombres de metodos como por ejemplo `findByNameAndSurnameAndUsernameAnd...()` siendo poco legible y confuso.
  
- ## <sub> - Programación Funcional - </sub>
+ ## <sub> - Lambda y API Stream - </sub>
  
  En este proyecto se útilizó lambda con el objetivo de comparar su aplicación con respecto a la programación imperativa. No encontré grandes complicaciones al implementar lambda y aplicarlo sobre el proyecto me ayudó a comprender mucho mejor esta forma de programar. En resumen, se utilizó lambda como forma de práctica y desarrollo personal. 
  
