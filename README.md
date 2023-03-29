@@ -12,7 +12,7 @@
  
   Solo crea tu usuario ingresando un `Email` y un `Username` (*los cuales deberán ser únicos*) elige el perfil que desees útilizar `Músico` ó `Banda`, 
  rellena el formulario con los datos necesarios y ya estarás listo para crear tu primer anuncio ó visualizar los anuncios de otros usuarios.
-  >  ## <sub> [Enlace a video de Youtube explicando parte del funcionamiento de la API](https://youtu.be/0SE7SZPPLlM) </sub>
+  >  ## <sub> [Enlace a video de Youtube explicando parte del funcionamiento de la API](https://youtu.be/TsK4fs1mTUI) </sub>
   
   
   # Información Técnica del proyecto
